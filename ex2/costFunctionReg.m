@@ -18,9 +18,15 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 
+% Regularization term
+allButFirstTheta = theta(2:length(theta));
 
+regTermJ = lambda * sum(allButFirstTheta.^2)/(2*m);
+regTermGrad = [0; lambda * allButFirstTheta/m];
+hOfX = sigmoid(theta' * X')';
 
-
+J = (-y' * log(hOfX) - (1-y)'*log(1-hOfX))/m + regTermJ;
+grad = (hOfX - y)' * X / m + regTermGrad';
 
 % =============================================================
 

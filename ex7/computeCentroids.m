@@ -27,16 +27,10 @@ centroids = zeros(K, n);
 %
 
 
-x = [idx X]
-
-x(
-
-adsfasdfkljk
 for i = 1:K
-    % centroids(i) = mean(X
+    xs_of_current_centroid = X(find(idx == i),:);
+    centroids(i, :) = sum(xs_of_current_centroid) / size(xs_of_current_centroid,1);
 end
-
-
 
 
 % =============================================================

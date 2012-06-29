@@ -43,9 +43,7 @@ Theta_grad = zeros(size(Theta));
 hOfX = (Theta * X')';
 ratedDiff = (hOfX - Y) .* R;
 
-regTheta = lambda / 2 * sum(sumsq(Theta));
-regX = lambda / 2 * sum(sumsq(X));
-regularizationTerm = regTheta + regX;
+regularizationTerm = lambda / 2 * (sum(sumsq(Theta)) + sum(sumsq(X)));
 
 J = sum(sumsq(ratedDiff))/2 + regularizationTerm;
 

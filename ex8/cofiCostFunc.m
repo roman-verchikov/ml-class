@@ -40,20 +40,17 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+hOfX = (Theta * X')';
+ratedDiff = (hOfX - Y) .* R;
 
+regTheta = lambda / 2 * sum(sumsq(Theta));
+regX = lambda / 2 * sum(sumsq(X));
+regularizationTerm = regTheta + regX;
 
+J = sum(sumsq(ratedDiff))/2 + regularizationTerm;
 
-
-
-
-
-
-
-
-
-
-
-
+X_grad = ratedDiff * Theta + lambda*X;
+Theta_grad = ratedDiff' * X + lambda*Theta;
 
 % =============================================================
 
